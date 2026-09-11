@@ -24911,7 +24911,6 @@ do -- AsterKeybindOverlay
                 end
             end
             task.wait(1)
-        end
         end)
     end
     
