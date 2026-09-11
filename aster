@@ -24883,18 +24883,23 @@ do -- AsterKeybindOverlay
                              end
 
                              if isTargetable then
-                                 -- "God" Armor Check
-                                 local armorCount = 0
-                                 if p.Character:FindFirstChild("God Halo") then
-                                     armorCount = armorCount + 1
-                                 end
-                                 if p.Character:FindFirstChild("God Chestplate") then
-                                     armorCount = armorCount + 1
-                                 end
-                                 if p.Character:FindFirstChild("God Legs") then
-                                     armorCount = armorCount + 1
-                                 end
-  
+                             -- "God" Armor Check
+                             local armorCount = 0
+                             if p.Character:FindFirstChild("God Halo") then
+                             armorCount = armorCount + 1
+                             end
+                             if p.Character:FindFirstChild("God Chestplate") then
+                             armorCount = armorCount + 1
+                             end
+                             if p.Character:FindFirstChild("God Legs") then
+                             armorCount + 1
+                         end
+                     end
+                 end
+                 end
+                 end
+                 end)
+-- Target Highlight Loop         
     -- Target Highlight Loop
     -- Ensures whatever player is currently targeted by ConfigPinch is highlighted
     if not __ASTER_RUNTIME.targetHighlightLoopStarted then
