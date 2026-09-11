@@ -24895,24 +24895,29 @@ do -- AsterKeybindOverlay
                                      armorCount = armorCount + 1
                                  end
 
-                                 if armorCount > 0 then
-                                     local dist = (p.Character.HumanoidRootPart.Position - myHrp.Position).Magnitude
-                                     if dist < godDist then
-                                                      godDist = dist
-                                         godTarget = p
-                                     end
-                                 end
-
-                            ASTER.Options.updatePinchLabel(godTarget.Name) 
-                        elseif ASTER.Options.updatePinchLabel then
-                            ASTER.Options.updatePinchLabel("None")
-                        end
+if not __ASTER_RUNTIME.combatTargetLoopStarted then
+    task.spawn(function()
+        if Settings.TargetMode == "Target GodOnly" then
+            if myHrp then
+                if armorCount > 0 then
+                    local dist = (p.Character.HumanoidRootPart.Position - myHrp.Position).Magnitude
+                    if dist < godDist then
+                        godDist = dist
+                        godTarget = p
                     end
                 end
             end
+
+            if godTarget then
+                ASTER.Options.updatePinchLabel(godTarget.Name)
+            elseif ASTER.Options.updatePinchLabel then
+                ASTER.Options.updatePinchLabel("None")
+            end
+
             task.wait(1)
-        end)
-    end
+        end
+    end)
+end
     
     -- Target Highlight Loop
     -- Ensures whatever player is currently targeted by ConfigPinch is highlighted
